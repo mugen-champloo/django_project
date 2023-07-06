@@ -1,0 +1,32 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div id="main">
+    <div class="inner">
+
+        <div id="main">
+            <div class="inner">
+    
+            <!-- Boxes -->
+                <div class="thumbnails">
+                    {% for product in products %}
+                        {% if product.cat == cat %}
+                            <div class="box">
+                                <a class="image fit"><img src="{{product.imageURL}}" alt="" /></a>
+                                <div class="inner">
+                                    <h3>{{product.name | truncatewords:6}}</h3>
+                                    <p>{{product.info | truncatewords:40}}</p>
+                                    <p>${{product.price}}</p>
+                                    <a href="{{ product.get_absolute_url }}" class="button fit">Watch</a>
+                                </div>
+                            </div>
+                        {% endif %}
+				{% endfor %}
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+  
+<br><br><br><br>
+<div class="thumbnails">
+  <section></section>
+  <section data-section-id="login" data-section-type="login">
+    <div class="Container">
+      <div class="PageContent PageContent--fitScreen PageContent--extraNarrow">
+        <form method="POST" accept-charset="UTF-8" data-login-with-shop-sign-in="true" name="login" class="Form Form--spacingTight" style="display: block" data-gtm-form-interact-id="0">
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="customer_login">
+          <input type="hidden" name="utf8" value="✓">
+          <header class="Form__Header">
+            <h1 class="Form__Title Heading u-h1">Вход</h1>
+            <p class="Form__Legend">Введите свой никнейм и пароль:</p>
+          </header>
+          <div class="Form__Item">
+            {{ form.username.errors }}
+            <input type="Username" class="Form__Input" name="username" required="required" placeholder="Username" aria-label="username">
+            <label class="Form__FloatingLabel">Username</label>
+          </div>
+
+          <div class="Form__Item">
+            {{ form.password.errors }}
+            <input type="password" class="Form__Input" name="password" required="required" placeholder="Password" aria-label="Password">
+            <label class="Form__FloatingLabel">Password</label>
+          </div>
+
+          <button type="submit" class="Form__Submit Button Button--primary Button--full" value="Login">Login</button>
+
+          <div class="Form__Hint Form__Hint--center">
+            <span class="Text--subdued">Нет аккаунта?</span>
+            <a href="/login/register" class="Link Link--secondary">Создать</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+<br><br><br><br>
+
+{% endblock content %}

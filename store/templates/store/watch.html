@@ -1,0 +1,31 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+    <div class="inner">
+        <div id="main">
+            <div class="inner">
+            <!-- Boxes -->
+                <div class="thumbnails">
+                    <div class="box">
+                        <a class="image fit"><img src="{{product.image.url}}" alt="" /></a>
+                        <div class="inner">
+                            <h3>{{product.name}}</h3>
+                            <p>{{product.info}}</p>
+                            <p>${{product.price}}</p>
+                            <a class="button fit">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+
+
+<script src="{% static 'js/jquery.scrollex.min.js' %}"></script>
+<script src="{% static 'js/main2.js' %}"></script>
+
+{% endblock content %}

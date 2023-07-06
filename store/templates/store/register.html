@@ -1,0 +1,86 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<br><br><br>
+<main id="main" role="main">
+    <section data-section-id="register" data-section-type="register">
+        <div class="Container">
+            <div class="PageContent PageContent--fitScreen PageContent--extraNarrow">
+                <form method="post" id="create_customer" accept-charset="UTF-8" data-login-with-shop-sign-up="true" name="create_customer" class="Form Form--spacingTight" data-gtm-form-interact-id="0">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="create_customer">
+                    <input type="hidden" name="utf8" value="✓">
+                    <header class="Form__Header">
+                        <h1 class="Form__Title Heading u-h1">Регистрация</h1>
+                        <p class="Form__Legend">Заполните информацию о себе:</p>
+                    </header>
+
+                    <div class="Form__Item">
+                        <input type="text" class="Form__Input" name="{{form.username.name}}" placeholder="Никнейм" aria-label="Username">
+                        <label class="Form__FloatingLabel">Никнейм</label>
+                    </div>
+
+                    <div class="Form__Item">
+                        <input type="text" class="Form__Input" name="{{form.first_name.name}}" placeholder="Имя" aria-label="first_name">
+                        <label class="Form__FloatingLabel">Имя</label>
+                    </div>
+
+                    <div class="Form__Item">
+                        <input type="text" class="Form__Input" name="{{form.last_name.name}}" placeholder="Фамилия" aria-label="last_name">
+                        <label class="Form__FloatingLabel">Фамилия</label>
+                    </div>
+
+                    <div class="Form__Item">
+                        <input type="text" class="Form__Input" name="{{form.email.name}}" placeholder="e-mail" aria-label="email">
+                        <label class="Form__FloatingLabel">e-mail</label>
+                    </div>
+
+                    <div class="Form__Item">
+                        <input type="password" class="Form__Input" name="{{form.password1.name}}" placeholder="Пароль" aria-label="Password">
+                        <label class="Form__FloatingLabel">Пароль</label>
+                    </div>
+
+                    <div class="Form__Item">
+                        <input type="password" class="Form__Input" name="{{form.password2.name}}" placeholder="Повторите пароль" aria-label="Confirm Password">
+                        <label class="Form__FloatingLabel">Повторите пароль</label>
+                    </div>
+
+                    <button type="submit" class="Form__Submit Button Button--primary Button--full">Создать аккаунт</button>
+                    <div class="Form__Hint Form__Hint--center">
+                      <span class="Text--subdued">У вас уже есть аккаунт?</span>
+                      <a href="/login" class="Link Link--secondary">Войти</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="shopify-section-1648717021426333c3" class="shopify-section shopify-section--bordered">
+        <section class="Section Section--spacingNormal" data-section-id="1648717021426333c3" data-section-type="featured-collections" data-settings="{
+            &quot;layout&quot;: &quot;carousel&quot;
+        }">
+        </section>
+    </div>
+</main>
+
+
+<!-- <div class="header-bar">
+  <h1>Register</h1>
+</div>
+<div class="card-body">
+  <form method="POST">
+      {% csrf_token %}
+      <label>{{form.username.label}}</label>
+      {{form.username}}
+      <label>{{form.password1.label}}</label>
+      {{form.password1}}
+      <label>{{form.password2.label}}</label>
+      {{form.password2}}
+  
+      <input style="margin-top:10px;" class="button" type="submit" value="Register">
+  </form>
+  <p> Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</div> -->
+
+{% endblock content %}

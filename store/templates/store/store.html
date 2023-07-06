@@ -1,0 +1,50 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Banner -->
+<!--
+	To use a video as your background, set data-video to the name of your video without
+	its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
+	formats to work correctly.
+	Apex Motorsport - Your Source for Limitless Power and Adrenaline! We specialize in supplying the highest quality and cutting-edge auto parts for racing and high-performance vehicles.
+-->
+	<section id="banner" data-video="data-video">
+		<video autoplay loop muted playsinline src="{% static 'images/Video2.mp4' %}"></video>
+
+		<div class="inner">
+			<header>
+				<h1>Apex Motorsport</h1>
+				<p>Your Source for Limitless Power and Adrenaline!<br />
+				We specialize in supplying the highest quality and cutting-edge <br /> auto parts for racing and high-performance vehicles.</p>
+			</header>
+			<a href="#main" class="more scrolly">Learn More</a>
+		</div>
+	</section>
+
+<!-- Main -->
+	<div id="main">
+		<div class="inner">
+			
+		<!-- Boxes -->
+			<div class="thumbnails">
+				{% for product in products %}
+				<div class="box">
+					<a class="image fit"><img src="{{product.imageURL}}" alt="" /></a>
+					<div class="inner">
+						<h3>{{product.name | truncatewords:6}}</h3>
+						<p>{{product.info | truncatewords:40}}</p>
+						<p>${{product.price}}</p>
+						<a href="{{ product.get_absolute_url }}" class="button fit">Watch</a>
+					</div>
+				</div>
+				{% endfor %}
+			
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+{% endblock content %}
