@@ -1,0 +1,12 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div style="margin-top: 70px;">
+    <a>asdfghjgfds</a>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Создать</button>
+    </form>
+</div>
+{% endblock content %}

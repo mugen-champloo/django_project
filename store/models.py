@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 
 
@@ -65,7 +66,6 @@ class Images(models.Model):
             url = ''
         return url
     
-
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
@@ -73,6 +73,7 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+    
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
@@ -87,9 +88,7 @@ class Order(models.Model):
     def shipping(self):
         shipping = False
         orderitems = self.orderitem_set.all()
-        for i in orderitems:
-            if i.product.digital == False:
-                shipping = True
+        shipping = True
         return shipping
     
     @property
@@ -130,3 +129,18 @@ class ShippingAddres(models.Model):
 
     def __str__(self):
         return self.address
+    
+def create_customer(sender, instance, created, **kwargs):
+    if created:
+        Customer.objects.create(user=instance)
+        print("customer created")
+
+post_save.connect(create_customer, sender=User)
+
+
+def update_customer(sender, instance, created, **kwargs):
+    if created == False:
+        instance.customer.save()
+        print("customer updated")
+
+post_save.connect(update_customer, sender=User)

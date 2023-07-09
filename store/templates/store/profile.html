@@ -1,0 +1,26 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div id="main">
+    <div class="inner">
+    <!-- Boxes -->
+        <div class="thumbnails" style="padding-top: 20px;">
+            <div class="box">
+                <div class="inner">
+
+                    <h1>Профиль пользователя</h1>
+                    <p>Имя пользователя: {{ user.username }}</p>
+                    <p>Имя: {{ user.first_name }}</p>
+                    <p>Фамилия: {{ user.last_name }}</p>
+                    <p>Email: {{ user.email }}</p>
+                    <p>Дата регистрации: {{ user.date_joined }}</p>
+                    <p>Последняя авторизация: {{ user.last_login }}</p>
+
+                    <a class="button fit" href="{% url 'logout' %}">Exit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

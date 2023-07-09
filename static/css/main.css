@@ -294,6 +294,14 @@
 		margin-top: -0.6em;
 	}
 
+.chg-quantity{
+	width: 12px;
+	cursor: pointer;
+	display: block;
+	margin-top: 5px;
+	transition:.1s;
+}
+
 /* Box */
 
 	.thumbnails {

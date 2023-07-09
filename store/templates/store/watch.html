@@ -2,9 +2,6 @@
 {% load static %}
 {% block content %}
 
-
-
-
     <div class="inner">
         <div id="main">
             <div class="inner">
@@ -16,7 +13,7 @@
                             <h3>{{product.name}}</h3>
                             <p>{{product.info}}</p>
                             <p>${{product.price}}</p>
-                            <a class="button fit">Add to cart</a>
+                            <a data-product="{{product.id}}" data-action="add" class="button fit update-cart">Add to cart</a>
                         </div>
                     </div>
                 </div>
